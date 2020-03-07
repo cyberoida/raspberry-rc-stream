@@ -3,6 +3,12 @@
     <title>h264-live-player web client demo</title>
   </head>
   <body>
+
+    <button type="button" onclick="wsavc.playStream()">Start Video</button>
+    <button type="button" onclick="wsavc.stopStream()">Stop Video</button>
+    <button type="button" onclick="wsavc.disconnect()">Disconnect</button>
+    <br/>
+
   <!-- provide WSAvcPlayer -->
     <script type="text/javascript">
 
@@ -40,10 +46,6 @@ window.wsavc = {
     })
   }
 };
-
-ww.postMessage({
-      cmd:'play'
-    });
 
     </script>
   </body>
