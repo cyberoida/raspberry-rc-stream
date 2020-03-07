@@ -22,8 +22,6 @@ ww.postMessage({
   url:uri
 });
 
-wsavc.playStream();
-
 //expose instance for button callbacks
 window.wsavc = {
   playStream(){
@@ -42,6 +40,8 @@ window.wsavc = {
     })
   }
 };
+
+window.wsavs.playStream();
 
     </script>
   </body>
