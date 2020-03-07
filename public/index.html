@@ -20,10 +20,11 @@ document.body.appendChild(canvas);
 var uri = "ws://" + document.location.host;
 var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
 wsavc.connect(uri);
-wsavc.playStream();
 
 //expose instance for button callbacks
 window.wsavc = wsavc;
+
+wsavc.playStream();
 
     </script>
   </body>
