@@ -61,7 +61,7 @@
       console.log("A gamepad connected:");
       console.log(event.gamepad);
       left_axis = event.gamepad.axes[0].toFixed(2);
-      right_axis = event.gamepad.axes[1].toFixed(2);
+      trigger_axis = 
       sender = setInterval(gamepadController, 16); //60 times per second
     });
 
@@ -70,6 +70,15 @@
       console.log(event.gamepad);
       clearInterval(sender);
     });
+
+    function sendTriggerAxis(new_val) {
+      if (new_val == trigger_axis) {
+        return;
+      } else {
+        controller.Gas(new_val);
+        trigger_axis = new_val;
+      }
+    }
 
     function sendLeftAxis(new_val) {
       if (new_val > -0.1 && new_val < 0.1) {
@@ -93,6 +102,8 @@
         var gp = gamepads[0];
 
         sendLeftAxis(gp.axes[0].toFixed(2));
+        trigger = gp.b[6].toFixed(2) * (-1) + gp.b[7].toFixed(2);
+        sendTriggerAxis(trigger);
       }
     }
   </script>
