@@ -74,6 +74,7 @@
       } else {
         controller.Steer(new_val);
         left_axis = new_val;
+        console.log(new_val);
       }
     }
 
@@ -85,8 +86,6 @@
       var gp = gamepads[0];
 
       sendLeftAxis(gp.axes[0]);
-
-      console.log(gp.axes[0]);
     }
 
     setInterval(gamepadController, 16); //60 times per second
