@@ -61,7 +61,7 @@
       console.log("A gamepad connected:");
       console.log(event.gamepad);
       left_axis = event.gamepad.axes[0].toFixed(2);
-      trigger_axis =  event.gamepad.buttons[6].toFixed(2) * (-1) + event.gamepad.buttons[7].toFixed(2)
+      trigger_axis =  event.gamepad.buttons[6].toFixed(2) * (-1) + event.gamepad.buttons[7].toFixed(2);
       sender = setInterval(gamepadController, 16); //60 times per second
     });
 
