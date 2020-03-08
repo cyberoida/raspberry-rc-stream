@@ -11,6 +11,7 @@ const express = require('express');
 
 
 const WebStreamerServer = require('./lib/raspivid');
+const ControlServer = require('./lib/_controller');
 
 const app  = express();
 
@@ -21,4 +22,8 @@ app.use(express.static(__dirname + '/vendor/dist'));
 const server  = http.createServer(app);
 const silence = new WebStreamerServer(server);
 
+const controlserver  = http.createServer(app);
+const controller = new ControlServer(controlserver);
+
 server.listen(8080);
+controlserver.listen(8081);
