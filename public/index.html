@@ -1,63 +1,75 @@
 <html>
-  <head>
-    <title>RaspiStream</title>
-  </head>
-  <body>
+
+<head>
+  <title>RaspiStream</title>
+</head>
+
+<body>
 
   <!-- provide WSAvcPlayer -->
   <script type="text/javascript" src="controller.js">;</script>
   <script type="text/javascript">
 
-var canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
+    var canvas = document.createElement("canvas");
+    document.body.appendChild(canvas);
 
-// Create h264 player
-var uri = "ws://" + document.location.host;
-const ww = new Worker('http-live-player-worker.js');
-const ofc = canvas.transferControlToOffscreen()
-ww.postMessage({
-  cmd:'init',
-  canvas: ofc
-}, [ofc]);
-ww.postMessage({
-  cmd:'connect',
-  url:uri
-});
-
-//expose instance for button callbacks
-window.wsavc = {
-  playStream(){
+    // Create h264 player
+    var uri = "ws://" + document.location.host;
+    const ww = new Worker('http-live-player-worker.js');
+    const ofc = canvas.transferControlToOffscreen()
     ww.postMessage({
-      cmd:'play'
-    })
-  },
-  stopStream(){
+      cmd: 'init',
+      canvas: ofc
+    }, [ofc]);
     ww.postMessage({
-      cmd:'stop'
-    })
-  },
-  disconnect(){
-    ww.postMessage({
-      cmd:'disconnect'
-    })
-  }
-};
+      cmd: 'connect',
+      url: uri
+    });
 
-var telemetry = "ws://" + document.location.hostname + ":8081";
+    //expose instance for button callbacks
+    window.wsavc = {
+      playStream() {
+        ww.postMessage({
+          cmd: 'play'
+        })
+      },
+      stopStream() {
+        ww.postMessage({
+          cmd: 'stop'
+        })
+      },
+      disconnect() {
+        ww.postMessage({
+          cmd: 'disconnect'
+        })
+      }
+    };
 
-setTimeout(wsavc.playStream,1000);
+    var telemetry = "ws://" + document.location.hostname + ":8081";
 
-var controller = new Controller(telemetry);
+    setTimeout(wsavc.playStream, 1000);
+
+    var controller = new Controller(telemetry);
 
 
-    </script>
-    <!-- Gamepad control -->
-    <script>
-      window.addEventListener("gamepadconnected", function(e) {
-        console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
-        e.gamepad.index, e.gamepad.id,
-        e.gamepad.buttons.length, e.gamepad.axes.length);
-      });
-    </script>
-  </body>
+  </script>
+  <!-- Gamepad control -->
+  <script>
+    window.addEventListener("gamepadconnected", (event) => {
+      console.log("A gamepad connected:");
+      console.log(event.gamepad);
+    });
+
+    window.addEventListener("gamepaddisconnected", (event) => {
+      console.log("A gamepad disconnected:");
+      console.log(event.gamepad);
+    });
+
+    function gamepadController() {
+      var gamepads = navigator.getGamepads();
+      console.log(gamepads);
+    }
+  </script>
+</body>
+
 </html>
