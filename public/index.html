@@ -60,8 +60,8 @@
     window.addEventListener("gamepadconnected", (event) => {
       console.log("A gamepad connected:");
       console.log(event.gamepad);
-      left_axis = event.gamepad.axes[0];
-      right_axis = event.gamepad.axes[1];
+      left_axis = event.gamepad.axes[0].toFixed(2);
+      right_axis = event.gamepad.axes[1].toFixed(2);
       sender = setInterval(gamepadController, 16); //60 times per second
     });
 
@@ -93,7 +93,7 @@
       } else {
         var gp = gamepads[0];
 
-        sendLeftAxis(gp.axes[0]);
+        sendLeftAxis(gp.axes[0].toFixed(2));
       }
     }
   </script>
