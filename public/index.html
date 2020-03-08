@@ -72,7 +72,7 @@
       if (new_val == left_axis) {
         return;
       } else {
-        if(new_val > -0.1 && new_val < 0.1) {
+        if (new_val > -0.1 && new_val < 0.1) {
           new_val_fixed = 0;
         } else {
           new_val_fixed = new_val;
@@ -85,12 +85,13 @@
 
     function gamepadController() {
       var gamepads = navigator.getGamepads();
-      if (!gamepads || gamepads.length() == 0) {
+      if (!gamepads) {
         return;
-      }
-      var gp = gamepads[0];
+      } else {
+        var gp = gamepads[0];
 
-      sendLeftAxis(gp.axes[0]);
+        sendLeftAxis(gp.axes[0]);
+      }
     }
 
     setInterval(gamepadController, 16); //60 times per second
