@@ -27,7 +27,9 @@
   "dependencies": {
     "debug": "^2.3.2",
     "sylvester.js": "^0.1.1",
-    "uclass": "^2.4.0"
+    "uclass": "^2.4.0",
+    "pca9685": "^4.0.3",
+    "i2c-bus": "^5.1.0"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
