@@ -72,6 +72,9 @@
       if (new_val == left_axis) {
         return;
       } else {
+        if(new_val > -0.1 && new_val < 0.1) {
+          new_val = 0;
+        }
         controller.Steer(new_val);
         left_axis = new_val;
         console.log(new_val);
