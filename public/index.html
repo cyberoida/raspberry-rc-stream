@@ -69,16 +69,16 @@
     });
 
     function sendLeftAxis(new_val) {
-      if (new_val == left_axis) {
-        return;
-      } else {
-        if (new_val > -0.1 && new_val < 0.1) {
+      if (new_val > -0.1 && new_val < 0.1) {
           new_val_fixed = 0;
         } else {
           new_val_fixed = new_val;
         }
+      if (new_val_fixed == left_axis) {
+        return;
+      } else {
         controller.Steer(new_val_fixed);
-        left_axis = new_val;
+        left_axis = new_val_fixed;
         console.log(new_val_fixed);
       }
     }
