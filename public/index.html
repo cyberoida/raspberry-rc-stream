@@ -74,6 +74,8 @@
       } else {
         if(new_val > -0.1 && new_val < 0.1) {
           new_val_fixed = 0;
+        } else {
+          new_val_fixed = new_val;
         }
         controller.Steer(new_val_fixed);
         left_axis = new_val;
@@ -83,7 +85,7 @@
 
     function gamepadController() {
       var gamepads = navigator.getGamepads();
-      if (!gamepads) {
+      if (!gamepads || gamepads.length() == 0) {
         return;
       }
       var gp = gamepads[0];
