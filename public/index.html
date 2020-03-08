@@ -73,11 +73,11 @@
         return;
       } else {
         if(new_val > -0.1 && new_val < 0.1) {
-          new_val = 0;
+          new_val_fixed = 0;
         }
-        controller.Steer(new_val);
+        controller.Steer(new_val_fixed);
         left_axis = new_val;
-        console.log(new_val);
+        console.log(new_val_fixed);
       }
     }
 
