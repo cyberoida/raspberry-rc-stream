@@ -62,6 +62,7 @@
       console.log(event.gamepad);
       left_axis = event.gamepad.axes[0].toFixed(2);
       trigger_axis = event.gamepad.buttons[6] * (-1) + event.gamepad.buttons[7];
+      console.log(trigger_axis);
       trigger_axis = trigger_axis.toFixed(2);
       sender = setInterval(gamepadController, 16); //60 times per second
     });
