@@ -55,9 +55,12 @@
   </script>
   <!-- Gamepad control -->
   <script>
+    var left_axis, right_axis;
     window.addEventListener("gamepadconnected", (event) => {
       console.log("A gamepad connected:");
       console.log(event.gamepad);
+      left_axis = event.gamepad.axes[0];
+      right_axis = event.gamepad.axes[1]
     });
 
     window.addEventListener("gamepaddisconnected", (event) => {
@@ -65,9 +68,25 @@
       console.log(event.gamepad);
     });
 
+    function sendLeftAxis(new_val) {
+      if (new_val == left_axis) {
+        return;
+      } else {
+        controller.Steer(new_val);
+        left_axis = new_val;
+      }
+    }
+
     function gamepadController() {
       var gamepads = navigator.getGamepads();
-      console.log(gamepads);
+      if (!gamepads) {
+        return;
+      }
+      var gp = gamepads[0];
+
+      sendLeftAxis(gp.axes[0]);
+
+      console.log(gp.axis[0]);
     }
 
     setInterval(gamepadController, 16); //60 times per second
