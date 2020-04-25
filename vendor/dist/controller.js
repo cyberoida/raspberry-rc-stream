@@ -26,7 +26,7 @@ class Controller {
       this.ws.send(message);
     }
   
-    Reverse(amount) {
+    /*Reverse(amount) {
       var message = "R"+amount;
       this.ws.send(message);
     }
@@ -38,5 +38,5 @@ class Controller {
     Emergency() {
       var message = "E0";
       this.ws.send(message);
-    }
+    }*/ //legacy
   }
