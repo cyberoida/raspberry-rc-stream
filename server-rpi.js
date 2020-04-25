@@ -27,7 +27,7 @@ const controlserver  = http.createServer(app);
 const controller = new ControlServer(controlserver);
 
 const telemetryserver  = http.createServer(app);
-const telemetry = new ControlServer(controlserver);
+const telemetry = new ControlServer(telemetryserver);
 
 server.listen(8080);
 controlserver.listen(8081);
