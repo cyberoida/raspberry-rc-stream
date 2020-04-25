@@ -8,6 +8,7 @@
 
   <!-- provide WSAvcPlayer -->
   <script type="text/javascript" src="controller.js">;</script>
+  <script type="text/javascript" src="telemetry.js">;</script>
   <script type="text/javascript">
 
     var canvas = document.createElement("canvas");
@@ -45,12 +46,13 @@
       }
     };
 
-    var telemetry = "ws://" + document.location.hostname + ":8081";
+    var controlserver = "ws://" + document.location.hostname + ":8081";
+    var telemetryserver = "ws://" + document.location.hostname + ":8081";
 
     setTimeout(wsavc.playStream, 1000);
 
-    var controller = new Controller(telemetry);
-
+    var controller = new Controller(controlserver);
+    var telemetry = new Telemetry(telemetryserver);
 
   </script>
   <!-- Gamepad control -->

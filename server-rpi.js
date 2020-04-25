@@ -12,6 +12,7 @@ const express = require('express');
 
 const WebStreamerServer = require('./lib/raspivid');
 const ControlServer = require('./lib/_controller');
+const TelemetryServer = require('./lib/_telemetry');
 
 const app  = express();
 
@@ -25,5 +26,9 @@ const silence = new WebStreamerServer(server);
 const controlserver  = http.createServer(app);
 const controller = new ControlServer(controlserver);
 
+const telemetryserver  = http.createServer(app);
+const telemetry = new ControlServer(controlserver);
+
 server.listen(8080);
 controlserver.listen(8081);
+telemetryserver.listen(8082);
