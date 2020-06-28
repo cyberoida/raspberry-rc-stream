@@ -30,6 +30,11 @@ class Controller {
       var message = "A"+amount;
       this.ws.send(message);
     }
+
+    Heartbeat(amount) {
+      var message = "H";
+      this.ws.send(message);
+    }
   
     /*Reverse(amount) {
       var message = "R"+amount;

@@ -74,6 +74,8 @@
       clearInterval(sender);
     });
 
+    setInterval(controller.Heartbeat(), 200);
+
     function sendTriggerAxis(new_val) {
       if (new_val == trigger_axis) {
         return;
