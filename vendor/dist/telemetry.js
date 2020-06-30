@@ -26,13 +26,13 @@ class Telemetry {
         var carrier = event.data.substring(1)
         document.getElementById('networkName').innerHTML = carrier;
         document.getElementById('conn').innerHTML = "OK";
-      }
-      if (event.data.startsWith("N")) {
+      } else if (event.data.startsWith("N")) {
         var gpslat = event.data.split(',')[0];
         var gpslon = event.data.split(',')[1];
         document.getElementById('gpslat').innerHTML = gpslat.substring(1);
         document.getElementById('gpslon').innerHTML = gpslon.substring(1);
       }
 
+    });
   }
 }
