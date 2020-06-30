@@ -1,18 +1,77 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <title>RaspiStream</title>
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 
 <body>
-
   <!-- provide WSAvcPlayer -->
   <script type="text/javascript" src="controller.js">;</script>
   <script type="text/javascript" src="telemetry.js">;</script>
+
+  <div class="camera" id="camera">
+
+  </div>
+
+  <div class="telemetry" id="telemetry">
+    <h2>Telemetrie lei</h2>
+    <table class="teletable">
+      <tr>
+        <td>
+          LTE Verbindung
+        </td>
+        <td>
+          OK
+        </td>
+      </tr>
+      <tr>
+        <td>
+          LTE Netzkwerkname
+        </td>
+        <td id="networkName">
+          HoT
+        </td>
+      </tr>
+      <tr>
+        <td>
+          LTE Signalstärke
+        </td>
+        <td id="signal">
+          50%
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Latitude
+        </td>
+        <td id="gpslat">
+          50%
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Longitude
+        </td>
+        <td id="gpslon">
+          50%
+        </td>
+      </tr>
+      <tr>
+        <td>
+          GPS Speed
+        </td>
+        <td id="gpsspd">
+          50%
+        </td>
+      </tr>
+    </table>
+  </div>
+
   <script type="text/javascript">
 
     var canvas = document.createElement("canvas");
-    document.body.appendChild(canvas);
+    document.getElementById("camera").appendChild(canvas);
 
     // Create h264 player
     var uri = "ws://" + document.location.host;
@@ -33,16 +92,19 @@
         ww.postMessage({
           cmd: 'play'
         })
+        document.getElementById("camera").style.borderColor = "green";
       },
       stopStream() {
         ww.postMessage({
           cmd: 'stop'
         })
+        document.getElementById("camera").style.borderColor = "red";
       },
       disconnect() {
         ww.postMessage({
           cmd: 'disconnect'
         })
+        document.getElementById("camera").style.borderColor = "red";
       }
     };
 
@@ -50,6 +112,7 @@
     var telemetryserver = "ws://" + document.location.hostname + ":8082";
 
     setTimeout(wsavc.playStream, 1000);
+
 
     var controller = new Controller(controlserver);
     var telemetry = new Telemetry(telemetryserver);

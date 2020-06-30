@@ -1,0 +1,17 @@
+.camera {
+    border: 5px outset red;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .teletable {
+    border: 1px solid black;
+  }
+
+  tr:nth-child(even) {background-color: #f2f2f2;}
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
