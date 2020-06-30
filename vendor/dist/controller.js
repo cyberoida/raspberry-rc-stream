@@ -32,6 +32,7 @@ class Controller {
     }
 
     Heartbeat(amount) {
+      console.log("heartbeat sent");
       var message = "H";
       this.ws.send(message);
     }

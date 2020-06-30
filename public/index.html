@@ -66,6 +66,7 @@
       trigger_axis = event.gamepad.buttons[6].value * (-1) + event.gamepad.buttons[7].value;
       trigger_axis = trigger_axis.toFixed(2);
       sender = setInterval(gamepadController, 16); //60 times per second
+      setInterval(controller.Heartbeat(), 200);
     });
 
     window.addEventListener("gamepaddisconnected", (event) => {
@@ -73,8 +74,6 @@
       console.log(event.gamepad);
       clearInterval(sender);
     });
-
-    setInterval(controller.Heartbeat(), 200);
 
     function sendTriggerAxis(new_val) {
       if (new_val == trigger_axis) {
