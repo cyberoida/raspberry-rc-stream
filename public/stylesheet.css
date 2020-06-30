@@ -1,5 +1,4 @@
 .camera {
-    border: 5px outset red;
     background-color: white;
     text-align: center;
     margin: 0 auto;
@@ -14,4 +13,8 @@
   th, td {
     padding: 15px;
     text-align: left;
+  }
+
+  canvas {
+    border: 5px outset red;
   }
