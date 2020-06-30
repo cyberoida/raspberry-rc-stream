@@ -17,7 +17,7 @@ class Telemetry {
       };
 
       this.ws.addEventListener('message', function (event) {
-        console.log('Message from server ', event.data);
+        //console.log('Message from server ', event.data);
         if (event.data.startsWith("S")) {
           var signal = parseInt(event.data.substring(1))
           document.getElementById('signal').innerHTML = signal + "%";
